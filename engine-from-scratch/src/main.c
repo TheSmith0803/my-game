@@ -38,6 +38,11 @@ int main(int argc, char *argv[]) {
     printf("Renderer:   %s\n", glGetString(GL_RENDERER));
     printf("Version:    %s\n", glGetString(GL_VERSION));
 
-    puts("Hello!");
+    puts("Hi Mom!");
+
+    bool should_quit = false;
+
+    while (!should_quit) {}
+
     return 0;
 }
