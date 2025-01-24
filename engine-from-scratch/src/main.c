@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
-    if (SDL_init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("Could not init SDL: %s\n", SDL_GetError());
         exit(1);
     }
@@ -42,7 +42,19 @@ int main(int argc, char *argv[]) {
 
     bool should_quit = false;
 
-    while (!should_quit) {}
+    while (!should_quit) {
+        SDL_Event event;
+
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    should_quit = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     return 0;
 }
