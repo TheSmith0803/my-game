@@ -9,7 +9,7 @@
 int main(int argc, char *argv[]) {
     render_init();
 
-    bool should_quit = true;
+    bool should_quit = false;
 
     while (!should_quit) {
         SDL_Event event;
