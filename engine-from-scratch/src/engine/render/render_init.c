@@ -104,5 +104,5 @@ void render_init_quad(u32 *vao, u32 *vbo, u32 *ebo) {
 } 
 
 void render_init_quad(u32 *vao, u32 *vbo, u32 *ebo);
-void redit_init_color_texture(u32 *texture);
+void render_init_color_texture(u32 *texture);
 void render_init_shaders(Render_State_Internal *state);
