@@ -18,7 +18,7 @@ u32 render_shader_create(const char *path_vert, const char *path_frag) {
 
     // Create and compile the vertex shader
     u32 shader_vertex = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(shader_vertex, 1, (const char *const *)&file_vertex.data, NULL);
+    glShaderSource(shader_vertex, 1, (const char *const *)&file_vertex, NULL);
     glCompileShader(shader_vertex);
     glGetShaderiv(shader_vertex, GL_COMPILE_STATUS, &success);
     if (!success) {
@@ -34,7 +34,7 @@ u32 render_shader_create(const char *path_vert, const char *path_frag) {
 
     // Create and compile the fragment shader
     u32 shader_fragment = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(shader_fragment, 1, (const char *const *)&file_fragment.data, NULL);
+    glShaderSource(shader_fragment, 1, (const char *const *)&file_fragment, NULL);
     glCompileShader(shader_fragment);
     glGetShaderiv(shader_fragment, GL_COMPILE_STATUS, &success);
     if (!success) {
