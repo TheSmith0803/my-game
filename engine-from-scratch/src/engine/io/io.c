@@ -47,7 +47,8 @@ File io_file_read(const char *path) {
 
             n = fread(data + used, 1, IO_READ_CHUNK_SIZE, fp);
             // if n == 0 then stop the loop
-            if (n == 0) {break;}
+            if (n == 0) 
+                break;
 
             used += n;
         }
