@@ -5,7 +5,7 @@ layout (location = 1) in vec2 a_uvs;
 out vec2 uvs;
 
 uniform mat4 projection;
-uniform mat4 modle;
+uniform mat4 model;
 
 void main() {
     uvs = a_uvs;
