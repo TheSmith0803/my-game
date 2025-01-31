@@ -16,11 +16,11 @@ int main(int argc, char *argv[]) {
 
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
-                case SDL_QUIT:
-                    should_quit = true;
-                    break;
-                default:
-                    break;
+            case SDL_QUIT:
+                should_quit = true;
+                break;
+            default:
+                break;
             }
         }
         render_begin();

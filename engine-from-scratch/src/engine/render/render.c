@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 
-#include "../global.h"
+#include "C:\Repos\my-game\engine-from-scratch\src\engine\global.h"
 #include "render.h"
 #include "render_internal.h"
 

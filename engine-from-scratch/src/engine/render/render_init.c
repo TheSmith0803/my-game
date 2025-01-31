@@ -3,6 +3,7 @@
 
 #include "../util.h"
 #include "../global.h"
+#include "../types.h"
 
 #include "render.h"
 #include "render_internal.h"
@@ -34,7 +35,7 @@ SDL_Window *render_init_window(u32 width, u32 height) {
         ERROR_EXIT("Failed to load GL: %s\n", SDL_GetError());
     }
 
-    //puts("OpenGL Loaded...");
+    puts("OpenGL Loaded...");
     ERROR_EXIT("Vendor:     %s\n", glGetString(GL_VENDOR));
     ERROR_EXIT("Renderer:   %s\n", glGetString(GL_RENDERER));
     ERROR_EXIT("Version:    %s\n", glGetString(GL_VERSION));

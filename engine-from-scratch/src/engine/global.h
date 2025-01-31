@@ -1,6 +1,5 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
-
 #include "render/render.h"
 
 typedef struct global {
