@@ -36,9 +36,9 @@ SDL_Window *render_init_window(u32 width, u32 height) {
     }
 
     puts("OpenGL Loaded...");
-    ERROR_EXIT("Vendor:     %s\n", glGetString(GL_VENDOR));
-    ERROR_EXIT("Renderer:   %s\n", glGetString(GL_RENDERER));
-    ERROR_EXIT("Version:    %s\n", glGetString(GL_VERSION));
+    printf("Vendor:     %s\n", glGetString(GL_VENDOR));
+    printf("Renderer:   %s\n", glGetString(GL_RENDERER));
+    printf("Version:    %s\n", glGetString(GL_VERSION));
 
     return window;
 }
