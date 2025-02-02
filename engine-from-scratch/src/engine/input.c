@@ -11,6 +11,9 @@ static void update_key_state(u8 current_state, Key_State *key_state) {
             *key_state = KS_PRESSED;
         }
     }
+    else {
+        *key_state = KS_UNPRESSED;
+    }
 }
 
 void input_update() {

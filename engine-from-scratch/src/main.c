@@ -20,10 +20,10 @@ static void input_handle(void) {
         pos[0] += 500 * global.time.delta;
     }
     if (global.input.up == KS_PRESSED || global.input.up == KS_HELD) {
-        pos[0] += 500 * global.time.delta;
+        pos[1] += 500 * global.time.delta;
     }
     if (global.input.down == KS_PRESSED || global.input.down == KS_HELD) {
-        pos[0] -= 500 * global.time.delta;
+        pos[1] -= 500 * global.time.delta;
     }
     if (global.input.escape == KS_PRESSED || global.input.escape == KS_HELD) {
         should_quit = true;
