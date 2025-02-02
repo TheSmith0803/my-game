@@ -1,6 +1,6 @@
-#include "../input.h"
-#include "../global.h"
-#include "../types.h"
+#include "input.h"
+#include "global.h"
+#include "types.h"
 
 static void update_key_state(u8 current_state, Key_State *key_state) {
     if (current_state) {

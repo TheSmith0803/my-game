@@ -1,8 +1,8 @@
-#include "../global.h"
-#include "../io/io.h"
-#include "../util.h"
-#include "../input.h"
-#include "../config.h"
+#include "global.h"
+#include "io/io.h"
+#include "util.h"
+#include "input.h"
+#include "config.h"
 
 static const char *CONFIG_DEFAULT = 
     "[controls]\n"
@@ -42,7 +42,7 @@ static char *config_get_value(const char *config_buffer, const char *value) {
         *tmp_ptr++ = *curr++;
     }
     
-    *(tmp_ptr+1) = 0;
+    *tmp_ptr = 0;
 
     return tmp_buffer;
 }
@@ -79,11 +79,12 @@ void config_init(void) {
         ERROR_EXIT("Could not create or load config file.\n");
     }
 }
+
 void config_key_bind(Input_Key key, const char *key_name) {
     SDL_Scancode scan_code = SDL_GetScancodeFromName(key_name);
     if (scan_code == SDL_SCANCODE_UNKNOWN) {
         ERROR_RETURN(, "Invalid scan code when binding key: %s\n", key_name);
     }
 
-    global.config.keybinds[key] = scan_code;
+    global.config.keybind[key] = scan_code;
 }
