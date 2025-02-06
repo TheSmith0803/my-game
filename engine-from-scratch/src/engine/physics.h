@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include <linmath.h>
 #include "types.h"
 
@@ -18,3 +19,4 @@ void physics_init(void);
 void physics_update(void);
 usize physics_body_create(vec2 postition, vec2 size);
 Body *physics_body_get(usize index);
+bool pyhsics_point_intersect_aabb(vec2 point, AABB aabb);
