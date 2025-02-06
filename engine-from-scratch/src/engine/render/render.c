@@ -65,6 +65,9 @@ void render_line_segment(vec2 start, vec2 end, vec4 color) {
     glUniformMatrix4fv(glGetUniformLocation(state.shader_default, "model"), 1,GL_FALSE, &model[0][0]);
     glUniform4fv(glGetUniformLocation(state.shader_default, "color"), 1, color);
 
+    glBindTexture(GL_TEXTURE_2D, state.texture_color);
+    glBindVertexArray(state.vao_line);
+
     glBindBuffer(GL_ARRAY_BUFFER, state.vbo_line);
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(line), line);
     glDrawArrays(GL_LINES, 0 , 2);
