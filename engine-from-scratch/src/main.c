@@ -9,6 +9,7 @@
 #include "engine/input.h"
 #include "engine/time.h"
 #include "engine/physics.h"
+#include "engine/util.h"
 
 static bool should_quit = false;
 static vec2 pos;
@@ -51,6 +52,11 @@ int main(int argc, char *argv[]) {
     pos[0] = global.render.width * 0.5;
     pos[1] = global.render.height * 0.5;
 
+    AABB test_aabb = {
+        .position = {global.render.width * 0.5, global.render.height * 0.5},
+        .half_size = {50, 50}
+    };
+
     while (!should_quit) {
         time_update();
         SDL_Event event;
@@ -69,8 +75,7 @@ int main(int argc, char *argv[]) {
         physics_update();
 
         render_begin();
-
-        render_quad(pos, (vec2){50, 50}, (vec4){0, 1, 0, 0});
+        
         
         for (u32 i = 0; i < body_count; ++i) {
             Body *body = physics_body_get(i);
@@ -96,6 +101,10 @@ int main(int argc, char *argv[]) {
                 body->velocity[1] = -500;
             }
         }
+
+        render_quad(pos, (vec2){50, 50}, (vec4){0, 1, 0, 0.5});
+        render_aabb((f32*)&test_aabb, (vec4){1, 1, 0, 0.5});
+
 
         render_end();
         time_update_late();

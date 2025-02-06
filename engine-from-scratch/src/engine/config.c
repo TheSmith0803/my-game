@@ -24,7 +24,7 @@ static char *config_get_value(const char *config_buffer, const char *value) {
 
     size_t len = strlen(line);
     char *end = line + len;
-
+    
     char *curr = line;
     char *tmp_ptr = &tmp_buffer[0];
     //Move pointer to '='.
