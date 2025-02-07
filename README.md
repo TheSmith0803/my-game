@@ -17,4 +17,6 @@ As of right now the cursor is replaced by a small quad, and it should be red whe
 ## Got it!
 ![more collisions!](./images/physics_point_intersect_aabb_code.png)
 
-The problem was some wrong numbers in the interscect function in physics.c :)
+The problem was some wrong numbers in the interscect function in physics.c :) 2/7/2025
+
+[video of it working](https://youtu.be/-5_ugKsjF38)
