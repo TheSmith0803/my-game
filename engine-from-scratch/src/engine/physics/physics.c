@@ -17,8 +17,8 @@ bool pyhsics_point_intersect_aabb(vec2 point, AABB aabb) {
     aabb_min_max(min, max, aabb);
     return point[0] >= min[0] &&
            point[0] <= max[0] &&
-           point[0] >= min[1] &&
-           point[0] <= max[1];
+           point[1] >= min[1] &&
+           point[1] <= max[1];
 }
 
 void physics_init(void) {
