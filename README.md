@@ -13,3 +13,8 @@ I was able to create multiple randomly sized quads and have them bounce around t
 
 As of right now the cursor is replaced by a small quad, and it should be red when it is inside this other quad, but is only red when it is over the first rendered line. Need to figure this out. :)
 2/6/2025
+
+## Got it!
+![more collisions!](./images/physics_point_intersect_aabb_code.png)
+
+The problem was some wrong numbers in the interscect function in physics.c :)
