@@ -8,8 +8,8 @@ I was able to create multiple randomly sized quads and have them bounce around t
 
 ## Collision detection!
 
-![physics engine at work!](./images/collision-1.png)
-![physics engine at work!](./images/collision-2.png)
+![collisions!](./images/collision-1.png)
+![collisions!](./images/collision-2.png)
 
 As of right now the cursor is replaced by a small quad, and it should be red when it is inside this other quad, but is only red when it is over the first rendered line. Need to figure this out. :)
 2/6/2025
