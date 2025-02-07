@@ -1,12 +1,12 @@
 # My Custom 2D Game engine and Game :) 
 
-### The first steps into having real working physics :)
+## The first steps into having real working physics :)
 ![physics engine at work!](./images/physics-pic.png)
 
 I was able to create multiple randomly sized quads and have them bounce around the screen
 2/2/2025
 
-### Collision detection!
+## Collision detection!
 
 ![physics engine at work!](./images/collision-1.png)
 ![physics engine at work!](./images/collision-2.png)
