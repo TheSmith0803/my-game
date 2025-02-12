@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
         for (u8 i = 0; i < 2; ++i) {
             if (magnitude[i] != 0) {
                 f32 t1 = (min[i] - pos[i]) / magnitude[i];
-                f32 t1 = (max[i] - pos[i]) / magnitude[i];
+                f32 t2 = (max[i] - pos[i]) / magnitude[i];
 
                 vec2 point;
                 vec2_scale(point, magnitude, t1);
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
                     render_quad(point, (vec2){5, 5}, CYAN);
                 }
 
-                vec2_scale(point, magnitude, t1);
+                vec2_scale(point, magnitude, t2);
                 vec2_add(point, point, pos);
                 if(max[i] < start_aabb.position[i]) {
                     render_quad(point, (vec2){5, 5}, CYAN);
