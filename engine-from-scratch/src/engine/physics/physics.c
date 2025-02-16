@@ -7,6 +7,9 @@
 
 static Physics_State_Internal state;
 
+static u32 iterations = 2;
+static f32 tick_rate;
+
 void aabb_min_max(vec2 min, vec2 max, AABB aabb) {
     vec2_sub(min, aabb.position, aabb.half_size);
     vec2_add(max, aabb.position, aabb.half_size);
@@ -79,6 +82,25 @@ void physics_update(void) {
     }
 }
 
+usize physics_static_body_create(vec2 postition, vec2 size) {
+    Static_Body static_body = {
+        .aabb = {
+            .position = { postition[0], postition[1] },
+            .half_size = { size[0] * 0.5, size[1] * 0.5 }, 
+        },
+    };
+
+    if (array_list_append(state.static_body_list, &static_body) == (usize)-1) {
+        ERROR_EXIT("Could not append static body to list\n");
+    }
+
+    return state.static_body_list->len - 1;
+}
+
+Static_Body *physics_static_body_get(usize index) {
+    return array_list_get(state.static_body_list, index);
+}
+
 usize physics_body_create(vec2 postition, vec2 size) {
     Body body = {
         .aabb = {
@@ -126,6 +148,18 @@ Hit ray_intersect_aabb(vec2 pos, vec2 magnitude, AABB aabb){
 
         hit.is_hit = true;
         hit.time = last_entry;
+
+        f32 dx = hit.position[0] - aabb.position[0];
+        f32 dy = hit.position[1] - aabb.position[1];
+        f32 px = aabb.half_size[0] - fabsf(dx);
+        f32 py = aabb.half_size[1] - fabsf(dy);
+
+        if(px < py) {
+            hit.normal[0] = (dx > 0) - (dx < 0);
+        }
+        else {
+            hit.normal[1] = (dy > 0) - (dy < 0);
+        }
     } 
 
     return hit;
