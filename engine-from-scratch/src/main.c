@@ -82,28 +82,17 @@ int main(int argc, char *argv[]) {
         cursor_aabb.position[0] = pos[0];
         cursor_aabb.position[1] = pos[1];
 
-        render_aabb((f32*)&test_aabb, WHITE);
-
-        vec4 faded = {1, 1, 1, 0.3};
-
-        if (physics_aabb_intersect_aabb(test_aabb, cursor_aabb)) {
-            render_aabb((f32*)&cursor_aabb, RED);
-        }
-        else {
-            render_aabb((f32*)&cursor_aabb, WHITE);
-        }
-
-        render_aabb((f32*)&start_aabb, faded);
+        render_aabb((f32*)&start_aabb, WHITE);
         render_line_segment(start_aabb.position, pos, WHITE);
 
         f32 x = sum_aabb.position[0];
         f32 y = sum_aabb.position[1];
         f32 size = sum_aabb.half_size[0];
 
-        render_line_segment((vec2){x - size, 0}, (vec2){x - size, global.render.height}, faded);
-        render_line_segment((vec2){x + size, 0}, (vec2){x + size, global.render.height}, faded);
-        render_line_segment((vec2){0, y - size}, (vec2){global.render.width, y - size}, faded);
-        render_line_segment((vec2){0, y + size}, (vec2){global.render.width, y + size}, faded);
+        render_line_segment((vec2){x - size, 0}, (vec2){x - size, global.render.height}, WHITE);
+        render_line_segment((vec2){x + size, 0}, (vec2){x + size, global.render.height}, WHITE);
+        render_line_segment((vec2){0, y - size}, (vec2){global.render.width, y - size}, WHITE);
+        render_line_segment((vec2){0, y + size}, (vec2){global.render.width, y + size}, WHITE);
 
         vec2 min, max;
         aabb_min_max(min, max, sum_aabb);

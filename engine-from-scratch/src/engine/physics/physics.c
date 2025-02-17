@@ -68,6 +68,12 @@ bool pyhsics_point_intersect_aabb(vec2 point, AABB aabb) {
 
 void physics_init(void) {
     state.body_list = array_list_create(sizeof(Body), 0);
+    state.static_body_list = array_list_create(sizeof(Static_Body), 0);
+
+    state.gravity = -200;
+    state.terminal_velocity = -10000;
+
+    tick_rate = 1.f / iterations;
 }
 
 void physics_update(void) {
@@ -75,10 +81,22 @@ void physics_update(void) {
 
     for (u32 i = 0; i < state.body_list->len; ++i) {
         body  = array_list_get(state.body_list, i);
-        body->velocity[0] += body->acceleration[0] * global.time.delta;
-        body->velocity[1] += body->acceleration[1] * global.time.delta;
-        body->aabb.position[0] += body->velocity[0] * global.time.delta;
-        body->aabb.position[1] += body->velocity[1] * global.time.delta;
+
+        body->velocity[1] += state.gravity;
+        if (state.terminal_velocity > body->velocity[1]){
+            body->velocity[1] = state.terminal_velocity;
+        }
+
+        body->velocity[0] += body->acceleration[0];
+        body->velocity[1] += body->acceleration[1];
+
+        vec2 scaled_velocity;
+        vec2_scale(scaled_velocity, body->velocity, global.time.delta * tick_rate);
+
+        for (u32 j = 0; j < iterations; ++j) {
+           // sweep_response(body, scaled_velocity);
+           // stationary_response(body);
+        }
     }
 }
 
