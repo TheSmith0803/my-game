@@ -76,6 +76,40 @@ void physics_init(void) {
     tick_rate = 1.f / iterations;
 }
 
+static void sweep_response(Body *body, vec2 velocity) {
+    Hit hit = sweep_static_bodies(body->aabb, velocity);
+
+    if (hit.is_hit) {
+        body->aabb.position[0] = hit.position[0];
+        body->aabb.position[1] = hit.position[1];
+
+        if (hit.normal[0] != 0) {
+            body->aabb.position[1] += vec2_len[1];
+            body->velocity[1] = 0;
+        }
+    }
+    else {
+        vec2_add(body->aabb.position, body->aabb.position, velocity);
+    }
+}
+
+static void stationary_response(Body *body) {
+    for (u32 i = 0; i < state.static_body_list->len; ++i) {
+        Static_Body *static_body = physics_static_body_get(i);
+
+        AABB aabb = aabb_minkowski_difference(static_body->aabb, body->aabb);
+        vec2 min, max;
+        aabb_min_max(min, max, aabb);
+
+        if (min[0] <= 0 && max[0] >= 0 && min[1] <= 0 && max[1] >= 0) {
+            vec2 penetration_vector;
+            aabb_penetration_vector(penetration_vector, aabb);
+
+            vec2_add(body->aabb.position, body->aabb.position, penetration_vector);
+        }
+    }
+}
+
 void physics_update(void) {
     Body *body;
 
